@@ -15,8 +15,8 @@ public class Sentiment{
 		Sentimental message = getLanguage("子どもたちがいなかったので、 鳥たちは歌いたいと思いませんでしたし、 木々は花を咲かせるのを忘れておりました。");
 		if (message != null) {
 			System.out.println("negative：" + message.documents[0].confidenceScores.negative);
-			System.out.println("newtral" +message.documents[0].confidenceScores.newtral);
-			System.out.println("positive" +message.documents[0].confidenceScores.positive);
+			System.out.println("newtral：" +message.documents[0].confidenceScores.newtral);
+			System.out.println("positive：" +message.documents[0].confidenceScores.positive);
 		}
 	}
 
