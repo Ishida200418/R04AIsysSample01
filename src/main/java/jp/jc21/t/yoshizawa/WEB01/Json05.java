@@ -12,27 +12,26 @@ import com.google.gson.stream.JsonReader;
 public class Json05 {
 
 	public static void main(String[] args) throws IOException, URISyntaxException, InterruptedException {
-		Language message = getLanguage("Stepover Toehold With Facelock");
+		Language message = getLanguage("らーめんたべたい");
 		if (message != null) {
 			System.out.println(message.documents[0].detectedLanguage.name);
 		}
 	}
 
-	static Language getLanguage(String s) 
-			throws IOException, URISyntaxException, InterruptedException {
+	static Language getLanguage(String s) throws IOException, URISyntaxException, InterruptedException {
 		Gson gson = new Gson();
 
-		String url = "https://textanalyticsjk3a2022.cognitiveservices.azure.com/"
+		String url = "https://r04jk3b01-test.cognitiveservices.azure.com/"
 				+"text/analytics/v3.0/languages";
 		Map<String,String> map = new HashMap<>();
-		map.put("Ocp-Apim-Subscription-Key","a48bddfb01a24b069a2a33318e308e6f");
+		map.put("Ocp-Apim-Subscription-Key","392e2313ec87488990042ebddbc46633");
 		
-		Docs doc=new Docs();
+		Docs02 doc=new Docs02();
 		doc.id="1";
 		doc.text=s;
 
-		Source src = new Source();
-		src.documents=new Docs[1];
+		Source02 src = new Source02();
+		src.documents=new Docs02[1];
 		src.documents[0]=doc;
 		
 		String jsonData = new Gson().toJson(src);
@@ -50,21 +49,21 @@ public class Json05 {
 
 }
 class Language{
-	Documents[] documents;
+	Documents02[] documents;
 	String[] errors;
 	String modelVersion;
 }
-class Documents{	
+class Documents02{	
 	DetectedLanguage detectedLanguage;
 }
 class DetectedLanguage{
 	String name;
 }
-class Source{
-	Docs[] documents;
+class Source02{
+	Docs02[] documents;
 }
 
-class Docs{
+class Docs02{
       String id;
       String text;
 }
