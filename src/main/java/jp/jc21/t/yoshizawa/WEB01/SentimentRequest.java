@@ -11,17 +11,16 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/SentimentRequest")
 public class SentimentRequest extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    public SentimentRequest() {
-        super();
-    }
+	
+		public SentimentRequest() {
+			super();
+		}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		protected void doGet(HttpServletRequest request, HttpServletResponse response)
+				throws ServletException, IOException {
+			request.getRequestDispatcher("/WEB-INF/jsp/SentimentRequest.jsp").forward(request, response);
+		}
+
 	}
+	
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
-	}
-
-}

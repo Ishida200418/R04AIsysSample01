@@ -4,9 +4,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Sentimentを使うサイト</title>
 </head>
-<body>
 
+<body>
+<h1>Sentimentを使うサイト</h1>
+
+<h3>調べたい文字列を教えてください</h3>
+<form method="POST" action="./SentimentResultServlet">
+<input type="TEXT" name="string" />
+<input type="submit" />
+</form>
 </body>
 </html>

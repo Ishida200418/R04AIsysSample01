@@ -1,6 +1,7 @@
 package jp.jc21.t.yoshizawa.WEB01;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,12 +17,41 @@ public class SentimentResultServlet extends HttpServlet {
         super();
     }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		String string = "生姜焼定食";
+		try {
+			Language result = Json05.getLanguage(string);
+			String message = result.documents[0].detectedLanguage.name;
+			request.setAttribute("message", message);
+			request.getRequestDispatcher("/WEB-INF/result.jsp").forward(request, response);
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		String string = request.getParameter("string");
+		request.setAttribute("string", string);
+
+		try {
+			Language result = Json05.getLanguage(string);
+			String message = result.documents[0].detectedLanguage.name;
+			request.setAttribute("message", message);
+			request.getRequestDispatcher("/WEB-INF/jsp/result.jsp").forward(request, response);
+		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
 	}
+
+}
+
 
 }
