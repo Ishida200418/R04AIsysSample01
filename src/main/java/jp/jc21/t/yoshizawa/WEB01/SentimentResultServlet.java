@@ -19,12 +19,19 @@ public class SentimentResultServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String string = "生姜焼定食";
+		String string = "むっちゃ楽しい！";
 		try {
-			Language result = Json05.getLanguage(string);
-			String message = result.documents[0].detectedLanguage.name;
-			request.setAttribute("message", message);
-			request.getRequestDispatcher("/WEB-INF/result.jsp").forward(request, response);
+			Sentimental result = Sentiment.getLanguage(string);
+			float message01 =  result.documents[0].confidenceScores.negative;
+			request.setAttribute("message01", message01);
+			
+			float message02 =  result.documents[0].confidenceScores.newtral;
+			request.setAttribute("message02", message02);
+			
+			float message03 =  result.documents[0].confidenceScores.positive;
+			request.setAttribute("message03", message03);
+			
+			request.getRequestDispatcher("/WEB-INF/SentimentResult.jsp").forward(request, response);
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		} catch (InterruptedException e) {
@@ -39,19 +46,22 @@ public class SentimentResultServlet extends HttpServlet {
 		request.setAttribute("string", string);
 
 		try {
-			Language result = Json05.getLanguage(string);
-			String message = result.documents[0].detectedLanguage.name;
-			request.setAttribute("message", message);
-			request.getRequestDispatcher("/WEB-INF/jsp/result.jsp").forward(request, response);
+			Sentimental result = Sentiment.getLanguage(string);
+			float message01 =  result.documents[0].confidenceScores.negative;
+			request.setAttribute("message01", message01);
+			
+			float message02 =  result.documents[0].confidenceScores.newtral;
+			request.setAttribute("message02", message02);
+			
+			float message03 =  result.documents[0].confidenceScores.positive;
+			request.setAttribute("message03", message03);
+			
+			request.getRequestDispatcher("/WEB-INF/jsp/SentimentResult.jsp").forward(request, response);
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-
 	}
-
 }
 
-
-}
