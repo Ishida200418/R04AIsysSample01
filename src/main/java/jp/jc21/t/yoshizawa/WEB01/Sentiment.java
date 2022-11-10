@@ -11,10 +11,10 @@ import com.google.gson.stream.JsonReader;
 public class Sentiment{
 
 	public static void main(String[] args) throws IOException, URISyntaxException, InterruptedException {
-		Sentimental message = getLanguage("子どもたちがいなかったので、 鳥たちは歌いたいと思いませんでしたし、 木々は花を咲かせるのを忘れておりました。");
+		Sentimental message = getLanguage("DetectLanguage");
 		if (message != null) {
 			System.out.println("negative：" + message.documents[0].confidenceScores.negative);
-			System.out.println("newtral：" +message.documents[0].confidenceScores.newtral);
+			System.out.println("neutral：" +message.documents[0].confidenceScores.neutral);
 			System.out.println("positive：" +message.documents[0].confidenceScores.positive);
 		}
 	}
@@ -63,7 +63,7 @@ class Documents{
 
 class confidenceScores {
 	float negative;
-	float newtral;
+	float neutral;
 	float positive;
 }
 

@@ -25,7 +25,7 @@ public class SentimentResultServlet extends HttpServlet {
 			float message01 =  result.documents[0].confidenceScores.negative;
 			request.setAttribute("message01", message01);
 			
-			float message02 =  result.documents[0].confidenceScores.newtral;
+			float message02 =  result.documents[0].confidenceScores.neutral;
 			request.setAttribute("message02", message02);
 			
 			float message03 =  result.documents[0].confidenceScores.positive;
@@ -50,7 +50,7 @@ public class SentimentResultServlet extends HttpServlet {
 			float message01 =  result.documents[0].confidenceScores.negative;
 			request.setAttribute("message01", message01);
 			
-			float message02 =  result.documents[0].confidenceScores.newtral;
+			float message02 =  result.documents[0].confidenceScores.neutral;
 			request.setAttribute("message02", message02);
 			
 			float message03 =  result.documents[0].confidenceScores.positive;
