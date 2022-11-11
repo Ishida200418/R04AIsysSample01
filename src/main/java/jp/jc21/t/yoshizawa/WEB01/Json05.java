@@ -13,7 +13,7 @@ public class Json05 {
 	public static void main(String[] args) throws IOException, URISyntaxException, InterruptedException {
 		Language message = getLanguage("らーめんたべたい");
 		if (message != null) {
-			System.out.println(message.documents02[0].detectedLanguage.name);
+			System.out.println(message.documents[0].detectedLanguage.name);
 		}
 	}
 
@@ -49,7 +49,7 @@ public class Json05 {
 
 }
 class Language{
-	Documents02[] documents02;
+	Documents02[] documents;
 	String[] errors;
 	String modelVersion;
 }
